@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { FindClientByEmail } from "../../use-cases/find-client-by-email";
+import { FindClientByEmail } from "../../use-cases/user/find-user-by-email";
 import { DeleteUser } from "../../use-cases/user/delete-user-use-cases";
 
 export class DeleteUserController {
