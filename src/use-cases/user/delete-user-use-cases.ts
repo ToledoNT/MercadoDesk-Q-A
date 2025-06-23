@@ -1,4 +1,3 @@
-import { ICreateUser } from "../../interface/user/create-user-interface";
 import { CreateLog } from "../logs/create-log"; 
 import { ResponseTemplateInterface } from "../../interface/responses/response-templete-interface";
 import { PrismaUserRepository } from "../../db/prisma/repositories/prisma-user-repositories";
