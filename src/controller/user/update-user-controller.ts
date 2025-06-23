@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { FetchClienteModel } from "../model/user/fetch-cliente-model";
-import { UpdateClienteModel } from "../model/user/update-cliente-model";
-import { FindClientByEmail } from "../use-cases/find-client-by-email";
-import { UpdateUser } from "../use-cases/user/update-user";
-import { IUpdateUser } from "../interface/user/update-user-interface";
+import { FetchClienteModel } from "../../model/user/fetch-cliente-model";
+import { UpdateClienteModel } from "../../model/user/update-cliente-model";
+import { FindClientByEmail } from "../../use-cases/find-client-by-email";
+import { UpdateUser } from "../../use-cases/user/update-user";
+import { IUpdateUser } from "../../interface/user/update-user-interface";
 
 export class UpdateClienteController {
   async handle(req: Request, res: Response): Promise<void> {

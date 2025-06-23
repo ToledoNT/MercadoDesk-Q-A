@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { FindClientByEmail } from "../use-cases/find-client-by-email";
-import { DeleteUser } from "../use-cases/user/delete-user-use-cases";
+import { FindClientByEmail } from "../../use-cases/find-client-by-email";
+import { DeleteUser } from "../../use-cases/user/delete-user-use-cases";
 
 export class DeleteUserController {
   async handle(req: Request, res: Response): Promise<void> {

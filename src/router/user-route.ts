@@ -1,8 +1,8 @@
 import express, { Router } from "express";
-import { CreateUserController } from "../controller/create-user-controller";
-import { UpdateClienteController } from "../controller/update-user-controller";
-import { DeleteUserController } from "../controller/delete-user-controller";
-import { GetAllUsersController } from "../controller/get-users-controller";
+import { CreateUserController } from "../controller/user/create-user-controller";
+import { UpdateClienteController } from "../controller/user/update-user-controller";
+import { DeleteUserController } from "../controller/user/delete-user-controller";
+import { GetAllUsersController } from "../controller/user/get-users-controller";
 
 const router: Router = express.Router();
 

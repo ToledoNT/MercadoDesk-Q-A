@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetAllUsers } from "../use-cases/user/get-users-use-cases";
+import { GetAllUsers } from "../../use-cases/user/get-users-use-cases";
 
 export class GetAllUsersController {
   async handle(req: Request, res: Response): Promise<void> {
