@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { FetchCliente } from "../../use-cases/user/fetch-user"; 
 import { ResponseTemplateModel } from "../../model/response-templete-model"; 
-import { GetTicketByIDZohoDesk } from
 import { GetThreadZohoDesk } from "../../use-cases/zoho-desk/tickets/get-thread-desk"; 
 import { CommentTicketsZohoDesk } from "../../use-cases/zoho-desk/tickets/comment-tickets"; 
 import { SendAnswerByID } from "../../use-cases/mercado-livre/send-answer-by-id-ml"; 
 import { CloseTicketZohoDesk } from "../../use-cases/zoho-desk/tickets/close-tickets"; 
 import { FieldsValidator } from "../../helpers/fields-validator";
+import { GetTicketByIDZohoDesk } from "../../use-cases/zoho-desk/tickets/get-ticket-by-id-desk";
 
 export class SendResponseMlController {
   async handle(req: Request, res: Response) {
