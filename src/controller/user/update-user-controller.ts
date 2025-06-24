@@ -26,10 +26,17 @@ export class UpdateClienteController {
       return;
     }
     const dadosParaAtualizar: IUpdateUser = {
-      id,
-      name: clienteFormatado.name,
-      email: clienteFormatado.email,
-    };
+    id,
+    name: clienteFormatado.name,
+    email: clienteFormatado.email,
+    password: clienteFormatado.password ?? "",
+    accessTokenMl: clienteFormatado.accessTokenMl ?? "",
+    refreshTokenMl: clienteFormatado.refreshTokenMl ?? "",
+    sellerIdMl: clienteFormatado.sellerIdMl ?? "",
+    refreshTokenZoho: clienteFormatado.refreshTokenZoho ?? "",
+    accessTokenZoho: clienteFormatado.accessTokenZoho ?? ""
+};
+
     const updateUser = await new UpdateUser().execute(dadosParaAtualizar);
     if (updateUser) {
       res.status(200).json({ mensagem: "Cliente atualizado com sucesso", dados: updateUser });
