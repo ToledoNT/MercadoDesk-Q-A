@@ -10,6 +10,8 @@ export class CreateUserModel implements ICreateUser {
   sellerIdMl: string;
   refreshTokenZoho: string;
   accessTokenZoho: string;
+  departmentIdZohoDesk: string;
+  contactIdZohoDesk: string;
 
   constructor(value: any) {
     this.id = value?.id ?? ""; 
@@ -21,5 +23,7 @@ export class CreateUserModel implements ICreateUser {
     this.sellerIdMl = value?.sellerIdMl ?? "";
     this.refreshTokenZoho = value?.refreshTokenZoho ?? "";
     this.accessTokenZoho = value?.accessTokenZoho ?? "";
+    this.departmentIdZohoDesk = value?.departmentIdZohoDesk ?? "";
+    this.contactIdZohoDesk = value?.contactIdZohoDesk ?? "";
   }
 }

@@ -8,6 +8,6 @@ export interface IUpdateUser {
   sellerIdMl: string;
   refreshTokenZoho: string;
   accessTokenZoho: string;
-  departmentIdZohoDesk: string;
-  contactIdZohoDesk: string;
+  departmentIdZohoDesk?: string;
+  contactIdZohoDesk?: string;
 }

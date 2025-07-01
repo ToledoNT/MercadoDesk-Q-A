@@ -10,6 +10,9 @@ export class UpdateClienteModel {
   sellerIdMl?: string;
   refreshTokenZoho?: string;
   accessTokenZoho?: string;
+  departmentIdZohoDesk?: string;
+  contactIdZohoDesk?: string;
+  
 
   constructor(newValue: any, oldValue: IFetchCliente) {
     this.formatFields(newValue, oldValue);
@@ -33,5 +36,10 @@ export class UpdateClienteModel {
     this.refreshTokenZoho = (newValue?.refreshTokenZoho !== undefined && newValue.refreshTokenZoho !== oldValue.refreshTokenZoho) ? newValue.refreshTokenZoho : oldValue.refreshTokenZoho;
 
     this.accessTokenZoho = (newValue?.accessTokenZoho !== undefined && newValue.accessTokenZoho !== oldValue.accessTokenZoho) ? newValue.accessTokenZoho : oldValue.accessTokenZoho;
+  
+    this.departmentIdZohoDesk = (newValue?.departmentIdZohoDesk !== undefined && newValue.departmentIdZohoDesk !== oldValue.departmentIdZohoDesk) ? newValue.departmentIdZohoDesk : oldValue.departmentIdZohoDesk;
+
+    this.contactIdZohoDesk = (newValue?.contactIdZohoDesk !== undefined && newValue.contactIdZohoDesk !== oldValue.contactIdZohoDesk) ? newValue.contactIdZohoDesk : oldValue.contactIdZohoDesk;
+
   }
 }
