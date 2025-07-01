@@ -1,6 +1,6 @@
 import { PrismaUserRepository } from "../../db/prisma/repositories/prisma-user-repositories";
-import { ResponseTemplateInterface } from "../../interface/responses/response-templete-interface";
-import { IUpdateUser } from "../../interface/user/update-user-interface";
+import { ResponseTemplateInterface } from "../../interfaces/responses/response-templete-interface";
+import { IUpdateUser } from "../../interfaces/user/update-user-interface";
 import { CreateLog } from "../logs/create-log";
 
 export class UpdateUser {

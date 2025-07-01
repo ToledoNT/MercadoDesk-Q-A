@@ -3,7 +3,7 @@ import { FetchClienteModel } from "../../model/user/fetch-cliente-model";
 import { UpdateClienteModel } from "../../model/user/update-cliente-model";
 import { FindClientByEmail } from "../../use-cases/user/find-user-by-email";
 import { UpdateUser } from "../../use-cases/user/update-user";
-import { IUpdateUser } from "../../interface/user/update-user-interface";
+import { IUpdateUser } from "../../interfaces/user/update-user-interface";
 
 export class UpdateClienteController {
   async handle(req: Request, res: Response): Promise<void> {

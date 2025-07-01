@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { ResponseTemplateInterface } from "../../../interface/responses/response-templete-interface";
+import { ResponseTemplateInterface } from "../../../interfaces/responses/response-templete-interface";
 import { ResponseTemplateModel } from "../../../model/response-templete-model";
 import prisma from "../client";
 

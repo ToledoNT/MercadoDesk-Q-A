@@ -1,4 +1,4 @@
-import { IFetchCliente } from "../../interface/user/fetch-user-interface";
+import { IFetchCliente } from "../../interfaces/user/fetch-user-interface";
 
 export class UpdateClienteModel {
   id?: string;

@@ -1,5 +1,5 @@
 import { PrismaUserRepository } from "../../db/prisma/repositories/prisma-user-repositories"; 
-import { IResponseCliente } from "../../interface/responses/response-client-interface"; 
+import { IResponseCliente } from "../../interfaces/responses/response-client-interface"; 
 import { ResponseClienteModel } from "../../model/response/response-cliente-model"; 
 import { CreateLog } from "../logs/create-log";
 

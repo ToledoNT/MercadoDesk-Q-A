@@ -1,4 +1,4 @@
-export interface IFetchCliente {
+export interface ICreateUser {
   id: string;   
   name: string;
   email: string;
@@ -8,4 +8,6 @@ export interface IFetchCliente {
   sellerIdMl: string;
   refreshTokenZoho: string;
   accessTokenZoho: string;
- }
+  departmentIdZohoDesk: string;
+  contactIdZohoDesk: string;
+}

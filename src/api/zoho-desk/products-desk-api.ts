@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
-import { ResponseTemplateModel } from "../../model/response-template-model";
-import { ResponseTemplateInterface } from "../../interfaces/response-template-interface";
 import { IProdutoDesk } from "../../interfaces/produto-desk-interface";
+import { ResponseTemplateInterface } from "../../interfaces/responses/response-templete-interface";
+import { ResponseTemplateModel } from "../../model/response-templete-model";
 
 export class ProductDeskApi {
   async create(

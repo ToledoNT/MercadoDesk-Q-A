@@ -1,6 +1,3 @@
-import { QuestionsAndAnswersMLApi } from "../../api/mercado-livre/questions-and-answers-ml-api";
-import { IResponseMercadoLivre } from "../../interfaces/responses/response-mercadolivre-interface";
-import { ResponseMercadoLivreModel } from "../../model/responses/response-mercadolivre-model";
 import { CreateLog } from "../logs/create-log";
 
 export class SendAnswerByID {

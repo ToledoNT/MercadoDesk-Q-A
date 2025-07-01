@@ -1,6 +1,6 @@
 import { TicketsDeskApi } from "../../../api/zoho-desk/tickets-api";
-import { ResponseTemplateInterface } from "../../../interfaces/response-template-interface";
-import { ResponseTemplateModel } from "../../../model/response-template-model";
+import { ResponseTemplateInterface } from "../../../interfaces/responses/response-templete-interface";
+import { ResponseTemplateModel } from "../../../model/response-templete-model";
 import { CreateLog } from "../../logs/create-log";
 
 export class CloseTicketZohoDesk {

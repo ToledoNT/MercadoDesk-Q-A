@@ -1,4 +1,4 @@
-export interface IUpdateUser {
+export interface IFetchCliente {
   id: string;   
   name: string;
   email: string;
@@ -8,4 +8,6 @@ export interface IUpdateUser {
   sellerIdMl: string;
   refreshTokenZoho: string;
   accessTokenZoho: string;
-}
+  departmentIdZohoDesk: string;
+  contactIdZohoDesk: string;
+ }

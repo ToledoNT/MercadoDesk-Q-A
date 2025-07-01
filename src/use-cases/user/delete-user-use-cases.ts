@@ -1,5 +1,5 @@
 import { CreateLog } from "../logs/create-log"; 
-import { ResponseTemplateInterface } from "../../interface/responses/response-templete-interface";
+import { ResponseTemplateInterface } from "../../interfaces/responses/response-templete-interface";
 import { PrismaUserRepository } from "../../db/prisma/repositories/prisma-user-repositories";
 
 export class DeleteUser {

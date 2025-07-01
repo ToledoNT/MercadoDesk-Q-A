@@ -1,5 +1,5 @@
 import { ResponseTemplate } from "../../helpers/response-templete";
-import { IFetchCliente } from "../../interface/user/fetch-user-interface";
+import { IFetchCliente } from "../../interfaces/user/fetch-user-interface";
 import { FetchClienteModel } from "../user/fetch-cliente-model";
 
 export class ResponseClienteModel extends ResponseTemplate {

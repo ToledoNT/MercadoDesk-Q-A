@@ -1,5 +1,5 @@
 import { TicketsDeskApi } from "../../../api/zoho-desk/tickets-api";
-import { ResponseTemplateInterface } from "../../../interfaces/response-template-interface";
+import { ResponseTemplateInterface } from "../../../interfaces/responses/response-templete-interface";
 import { CreateLog } from "../../logs/create-log";
 
 export class CommentTicketsZohoDesk {

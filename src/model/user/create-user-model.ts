@@ -1,4 +1,4 @@
-import { ICreateUser } from "../../interface/user/create-user-interface";
+import { ICreateUser } from "../../interfaces/user/create-user-interface";
 
 export class CreateUserModel implements ICreateUser {
   id: string;

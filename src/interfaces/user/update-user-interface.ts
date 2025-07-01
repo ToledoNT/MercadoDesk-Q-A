@@ -1,4 +1,4 @@
-export interface ICreateUser {
+export interface IUpdateUser {
   id: string;   
   name: string;
   email: string;
@@ -8,4 +8,6 @@ export interface ICreateUser {
   sellerIdMl: string;
   refreshTokenZoho: string;
   accessTokenZoho: string;
+  departmentIdZohoDesk: string;
+  contactIdZohoDesk: string;
 }

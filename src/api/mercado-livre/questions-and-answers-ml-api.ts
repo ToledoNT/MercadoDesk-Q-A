@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
-import { ResponseTemplateInterface } from "../../interfaces/response-template-interface";
-import { ResponseTemplateModel } from "../../model/response-template-model";
+import { ResponseTemplateModel } from "../../model/response-templete-model";
+import { ResponseTemplateInterface } from "../../interfaces/responses/response-templete-interface";
 
 export class QuestionsAndAnswersMLApi {
   async getQuestionByIds(

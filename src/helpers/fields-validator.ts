@@ -1,4 +1,4 @@
-import { ResponseTemplateInterface } from "../interface/responses/response-templete-interface";
+import { ResponseTemplateInterface } from "../interfaces/responses/response-templete-interface";
 import { ResponseTemplateModel } from "../model/response-templete-model";
 
 export class FieldsValidator {

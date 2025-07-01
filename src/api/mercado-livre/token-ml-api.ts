@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
-import { ResponseTemplateModel } from "../../model/response-template-model";
-import { ResponseTemplateInterface } from "../../interfaces/response-template-interface";
+import { ResponseTemplateInterface } from "../../interfaces/responses/response-templete-interface";
+import { ResponseTemplateModel } from "../../model/response-templete-model";
 
 export class GetTokenApiMercadoLivre {
   async createAccessTokenML(
