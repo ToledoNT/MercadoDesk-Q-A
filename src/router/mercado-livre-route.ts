@@ -1,13 +1,10 @@
 import express, { Router, Request, Response } from "express";
-import { CheckAllCredentialsController } from "../controller/mercado-livre/check-all-cedentials-controller.js";
-import { CheckCredentialsMercadoLivreController } from "../controller/mercado-livre/check-credential-ml-controller.js";
-import { CheckCredentialsZohoController } from "../controller/mercado-livre/check-credentials-zoho-controller.js";
-import { SendResponseMlController } from "../controller/mercado-livre/send-response-ml-controller.js";
-import { GetUnansweredQuestionsController } from "../controller/mercado-livre/get-questions-controller.js";
-
+import { CheckAllCredentialsController } from "../controller/mercado-livre/check-all-credentials-controller";
+import { CheckCredentialsMercadoLivreController } from "../controller/mercado-livre/check-credential-ml-controller";
+import { CheckCredentialsZohoController } from "../controller/mercado-livre/check-credentials-zoho-controller";
+import { SendResponseMlController } from "../controller/mercado-livre/send-response-ml-controller";
+import { GetUnansweredQuestionsController } from "../controller/mercado-livre/get-questions-controller";
 const router = Router();
-
-//Colocar os midleware futuramente 
 router.get(
   "/mercado-livre/all/:orgID",
   new CheckAllCredentialsController().handle

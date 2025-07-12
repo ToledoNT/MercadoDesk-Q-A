@@ -1,6 +1,6 @@
 import { GetTokenApiMercadoLivre } from "../../api/mercado-livre/token-ml-api";
 import { IResponseMercadoLivre } from "../../interfaces/responses/response-mercadolivre-interface";
-import { ResponseMercadoLivreModel } from "../../model/responses/response-mercadolivre-model";
+import { ResponseMercadoLivreModel } from "../../model/response/response-mercadolivre-model";
 import { CreateLog } from "../logs/create-log";
 
 export class GetRefreshTokenML {

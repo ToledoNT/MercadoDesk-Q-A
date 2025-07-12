@@ -8,11 +8,11 @@ export class UpdateClienteModel {
   accessTokenMl?: string;
   refreshTokenMl?: string;
   sellerIdMl?: string;
+  orgIdDesk?: string;
   refreshTokenZoho?: string;
   accessTokenZoho?: string;
   departmentIdZohoDesk?: string;
   contactIdZohoDesk?: string;
-  
 
   constructor(newValue: any, oldValue: IFetchCliente) {
     this.formatFields(newValue, oldValue);
@@ -21,7 +21,7 @@ export class UpdateClienteModel {
   private formatFields(newValue: any, oldValue: IFetchCliente) {
     this.id = (newValue?.id !== undefined && newValue.id !== oldValue.id) ? newValue.id : oldValue.id;
 
-    this.name = (newValue?.nome !== undefined && newValue.nome !== oldValue.name) ? newValue.nome : oldValue.name;
+    this.name = (newValue?.name !== undefined && newValue.name !== oldValue.name) ? newValue.name : oldValue.name;
 
     this.email = (newValue?.email !== undefined && newValue.email !== oldValue.email) ? newValue.email : oldValue.email;
 
@@ -33,13 +33,14 @@ export class UpdateClienteModel {
 
     this.sellerIdMl = (newValue?.sellerIdMl !== undefined && newValue.sellerIdMl !== oldValue.sellerIdMl) ? newValue.sellerIdMl : oldValue.sellerIdMl;
 
+    this.orgIdDesk = (newValue?.orgIdDesk !== undefined && newValue.orgIdDesk !== oldValue.orgIdDesk) ? newValue.orgIdDesk : oldValue.orgIdDesk;
+
     this.refreshTokenZoho = (newValue?.refreshTokenZoho !== undefined && newValue.refreshTokenZoho !== oldValue.refreshTokenZoho) ? newValue.refreshTokenZoho : oldValue.refreshTokenZoho;
 
     this.accessTokenZoho = (newValue?.accessTokenZoho !== undefined && newValue.accessTokenZoho !== oldValue.accessTokenZoho) ? newValue.accessTokenZoho : oldValue.accessTokenZoho;
-  
+
     this.departmentIdZohoDesk = (newValue?.departmentIdZohoDesk !== undefined && newValue.departmentIdZohoDesk !== oldValue.departmentIdZohoDesk) ? newValue.departmentIdZohoDesk : oldValue.departmentIdZohoDesk;
 
     this.contactIdZohoDesk = (newValue?.contactIdZohoDesk !== undefined && newValue.contactIdZohoDesk !== oldValue.contactIdZohoDesk) ? newValue.contactIdZohoDesk : oldValue.contactIdZohoDesk;
-
   }
 }

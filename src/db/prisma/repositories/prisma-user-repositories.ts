@@ -6,7 +6,7 @@ import prisma from "../client";
 export class PrismaUserRepository {
   async create(data: Prisma.UserCreateInput): Promise<ResponseTemplateInterface> {
     try {
-      const response = await prisma.user.create({ data });
+      const response = await prisma.user.create({ data }); 
       return new ResponseTemplateModel(true, 201, "Usuário criado com sucesso", response);
     } catch (error) {
       return new ResponseTemplateModel(
@@ -100,6 +100,35 @@ export class PrismaUserRepository {
         false,
         500,
         "Erro ao deletar usuário",
+        error instanceof Error ? error.message : String(error)
+      );
+    }
+  }
+
+  async findByPermission(permission: string): Promise<ResponseTemplateInterface> {
+    try {
+      const response = await prisma.user.findFirst({
+        where: { permission },
+        select: {
+          id: true,
+          clientIdZoho: true,   
+          clientSecretZoho: true,
+          refreshTokenZoho: true,
+          permission: true,
+        },
+        orderBy: {
+          createdAt: "asc",  
+        },
+      });
+  
+      if (!response) throw new Error(`Nenhum usuário com permissão '${permission}' encontrado`);
+  
+      return new ResponseTemplateModel(true, 200, "Usuário encontrado", response);
+    } catch (error) {
+      return new ResponseTemplateModel(
+        false,
+        404,
+        `Erro ao buscar usuário com permissão '${permission}'`,
         error instanceof Error ? error.message : String(error)
       );
     }

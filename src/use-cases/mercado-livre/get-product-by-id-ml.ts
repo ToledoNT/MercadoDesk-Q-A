@@ -1,6 +1,6 @@
 import { ProductInformationMLApi } from "../../api/mercado-livre/product-information-ml";
 import { IResponseProdutoMercadoLivre } from "../../interfaces/responses/response-produtomercado-livre-interface copy";
-import { ResponseProdutoMercadoLivreModel } from "../../model/responses/response-produto-mercado-livre";
+import { ResponseProdutoMercadoLivreModel } from "../../model/response/response-produto-mercado-livre";
 import { CreateLog } from "../logs/create-log";
 
 export class GetMlProductByID {

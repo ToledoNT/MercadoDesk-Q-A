@@ -8,22 +8,24 @@ export class FetchClienteModel implements IFetchCliente {
   accessTokenMl: string;
   refreshTokenMl: string;
   sellerIdMl: string;
+  orgIdDesk: string;
   refreshTokenZoho: string;
   accessTokenZoho: string;
   departmentIdZohoDesk: string;
   contactIdZohoDesk: string;
 
   constructor(value: IFetchCliente) {
-    this.id = value.id;
-    this.name = value.name;
-    this.email = value.email;
+    this.id = value.id ?? "";
+    this.name = value.name ?? "";
+    this.email = value.email ?? "";
     this.password = value.password ?? ""; 
     this.accessTokenMl = value.accessTokenMl ?? "";
     this.refreshTokenMl = value.refreshTokenMl ?? "";
     this.sellerIdMl = value.sellerIdMl ?? "";
+    this.orgIdDesk = value.orgIdDesk ?? "";
     this.refreshTokenZoho = value.refreshTokenZoho ?? "";
     this.accessTokenZoho = value.accessTokenZoho ?? "";
     this.departmentIdZohoDesk = value.departmentIdZohoDesk ?? "";
-    this.contactIdZohoDesk = value.contactIdZohoDesk
+    this.contactIdZohoDesk = value.contactIdZohoDesk ?? "";
   }
 }
