@@ -28,7 +28,7 @@ router.post(
 );
 
 router.post(
-  "/questions/:orgID",
+  "/mercado-livre/questions/:orgID",
   new GetUnansweredQuestionsController().handle
 );
 

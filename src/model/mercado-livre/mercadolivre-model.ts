@@ -2,21 +2,24 @@ import { IMercadoLivre } from "../../interfaces/mercado-livre-interface";
 
 export class MercadoLivreModel {
   orgId: string;
-  clientSecretML: string;
-  accessTokenMl?: string; // O 'accessTokenMl' continua opcional
+  clientSecretMl: string;
+  accessTokenMl?: string; 
   clientIdMl: string;
   refreshTokenMl: string;
   text?: string;
   id?: string;
 
-  constructor(value: IMercadoLivre) {
+  constructor(value?: IMercadoLivre) {
+    if (!value) {
+      throw new Error("Parâmetro 'value' é obrigatório");
+    }
     this.orgId = value.orgId;
-    this.clientSecretML = value.clientSecretML;
+    this.clientSecretMl = value.clientSecretMl;
     this.clientIdMl = value.clientIdMl;
     this.refreshTokenMl = value.refreshTokenMl;
 
-    this.accessTokenMl = value.accessTokenMl;
-    this.text = value.text;
-    this.id = value.id;
+    if (value.accessTokenMl) this.accessTokenMl = value.accessTokenMl;
+    if (value.text) this.text = value.text;
+    if (value.id) this.id = value.id;
   }
 }

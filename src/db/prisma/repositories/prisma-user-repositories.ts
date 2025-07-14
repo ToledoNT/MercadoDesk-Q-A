@@ -111,18 +111,24 @@ export class PrismaUserRepository {
         where: { permission },
         select: {
           id: true,
-          clientIdZoho: true,   
+          permission: true,
+          clientIdZoho: true,
           clientSecretZoho: true,
           refreshTokenZoho: true,
-          permission: true,
-        },
+          accessTokenZoho: true,
+          refreshTokenMl: true,
+          clientIdMl: true,
+          clientSecretMl: true
+            },
         orderBy: {
-          createdAt: "asc",  
+          createdAt: "asc",
         },
       });
-  
-      if (!response) throw new Error(`Nenhum usuário com permissão '${permission}' encontrado`);
-  
+
+      if (!response) {
+        return new ResponseTemplateModel(false, 404, `Nenhum usuário com permissão '${permission}' encontrado`, null);
+      }
+
       return new ResponseTemplateModel(true, 200, "Usuário encontrado", response);
     } catch (error) {
       return new ResponseTemplateModel(

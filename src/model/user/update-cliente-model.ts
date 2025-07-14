@@ -8,6 +8,8 @@ export class UpdateClienteModel {
   accessTokenMl?: string;
   refreshTokenMl?: string;
   sellerIdMl?: string;
+  clientIdMl!: string;
+  clientSecretMl!: string;
   orgIdDesk?: string;
   refreshTokenZoho?: string;
   accessTokenZoho?: string;
@@ -32,6 +34,10 @@ export class UpdateClienteModel {
     this.refreshTokenMl = (newValue?.refreshTokenMl !== undefined && newValue.refreshTokenMl !== oldValue.refreshTokenMl) ? newValue.refreshTokenMl : oldValue.refreshTokenMl;
 
     this.sellerIdMl = (newValue?.sellerIdMl !== undefined && newValue.sellerIdMl !== oldValue.sellerIdMl) ? newValue.sellerIdMl : oldValue.sellerIdMl;
+
+    this.clientIdMl = (newValue?.clientIdMl !== undefined && newValue.clientIdMl !== oldValue.clientIdMl) ? newValue.clientIdMl : oldValue.clientIdMl;
+
+    this.clientSecretMl = (newValue?.clientSecretMl !== undefined && newValue.clientSecretMl !== oldValue.clientSecretMl) ? newValue.clientSecretMl : oldValue.clientSecretMl;
 
     this.orgIdDesk = (newValue?.orgIdDesk !== undefined && newValue.orgIdDesk !== oldValue.orgIdDesk) ? newValue.orgIdDesk : oldValue.orgIdDesk;
 

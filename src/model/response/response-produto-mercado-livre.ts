@@ -1,4 +1,4 @@
-import { IProdutoMercadoLivre } from "../../interfaces/produto-mercado-livre-interface copy";
+import { IProdutoMercadoLivre } from "../../interfaces/Iproduto-mercado-livre-interfaces";
 import { ProdutoMercadoLivreModel } from "../mercado-livre/produto-mercado-livre-model";
 
 export class ResponseProdutoMercadoLivreModel {

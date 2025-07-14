@@ -1,6 +1,6 @@
 export interface IMercadoLivre {
   orgId: string;
-  clientSecretML: string;
+  clientSecretMl: string;
   clientIdMl: string;
   refreshTokenMl: string;
   accessTokenMl?: string;

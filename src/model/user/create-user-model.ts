@@ -8,6 +8,8 @@ export class CreateUserModel implements ICreateUser {
   accessTokenMl: string;
   refreshTokenMl: string;
   sellerIdMl: string;
+  clientIdMl: string;
+  clientSecretMl: string;
   orgIdDesk: string;
   clientIdZoho: string;
   clientSecretZoho: string;
@@ -24,6 +26,8 @@ export class CreateUserModel implements ICreateUser {
     this.accessTokenMl = value?.accessTokenMl ?? "";
     this.refreshTokenMl = value?.refreshTokenMl ?? "";
     this.sellerIdMl = value?.sellerIdMl ?? "";
+    this.clientIdMl = value?.clientIdMl ?? "";
+    this.clientSecretMl = value?.clientSecretMl ?? "";
     this.orgIdDesk = value?.orgIdDesk ?? "";
     this.clientIdZoho = value?.clientIdZoho ?? "";
     this.clientSecretZoho = value?.clientSecretZoho ?? "";

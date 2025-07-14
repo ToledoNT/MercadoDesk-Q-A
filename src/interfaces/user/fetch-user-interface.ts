@@ -6,6 +6,8 @@ export interface IFetchCliente {
   accessTokenMl: string;
   refreshTokenMl: string;
   sellerIdMl: string;
+  clientIdMl: string;
+  clientSecretMl: string;
   orgIdDesk: string;
   refreshTokenZoho: string;
   accessTokenZoho: string;

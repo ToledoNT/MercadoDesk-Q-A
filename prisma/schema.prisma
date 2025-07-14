@@ -15,6 +15,8 @@ model User {
   password             String   @default("")
   accessTokenMl        String   @default("")
   refreshTokenMl       String   @default("")
+  clientIdMl           String   @default("")
+  clientSecretMl       String   @default("")
   sellerIdMl           String   @default("")
   orgIdDesk            String   @default("")
   clientIdZoho         String   @default("")
@@ -31,4 +33,4 @@ model Log {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   value     String
   createdAt DateTime @default(now())
-}
+} 

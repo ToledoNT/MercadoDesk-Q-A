@@ -6,9 +6,9 @@ async function renovarToken(): Promise<void> {
     const result = await tokenUseCase.execute();
 
     if (result) {
-      console.log("Token renovado com sucesso!");
+      console.log("Token do Zoho Desk renovado com sucesso!");
     } if(!result) {
-      console.error("Falha na renovação do token:", result);
+      console.error("Falha na renovação do token da Zoho:", result);
     }
   } 
 

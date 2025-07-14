@@ -10,19 +10,8 @@ import { SearchProductsByMlIdZohoDesk } from "../../use-cases/mercado-livre/sear
 import { ProdutoDeskModel } from "../../model/desk/produto-desk-model";
 import { CreateProdutoZohoDesk } from "../../use-cases/zoho-desk/produtos/create-produto-desk";
 
-
 export class GetUnansweredQuestionsController {
   async handle(req: Request, res: Response) {
-    res
-      .send(
-        new ResponseTemplateModel(
-          true,
-          200,
-          "Requisição recebida com sucesso",
-          []
-        )
-      )
-      .status(200); 
     const { orgID } = req.params;
     const { resource } = req.body;
     const questionID = resource.split("/").pop();
@@ -34,6 +23,7 @@ export class GetUnansweredQuestionsController {
       res.status(consultOrganizationByID.code).send(consultOrganizationByID);
       return;
     }
+
     const requiredFields = [
       "accessTokenZoho",
       "accessTokenMl",
@@ -48,22 +38,28 @@ export class GetUnansweredQuestionsController {
       res.status(validatedFields.code).send(validatedFields);
       return;
     }
+
     const ticketExists = await new SearchTicketsByMlIdZohoDesk().execute(
       orgID,
       consultOrganizationByID.data[0].accessTokenZoho,
       questionID
     );
+    console.log(ticketExists)
     if (ticketExists.status) {
       res
         .status(400)
         .send(new ResponseTemplateModel(false, 400, "Ticket já criado", []));
       return;
     }
+
     const getQuestionByID = await new GetQuestionsByID().execute(
       questionID,
       consultOrganizationByID.data[0].accessTokenMl
     );
-    if (!getQuestionByID.data) {
+
+    console.log(getQuestionByID);
+
+    if (!getQuestionByID || !getQuestionByID.data) {
       res
         .status(400)
         .send(
@@ -76,6 +72,7 @@ export class GetUnansweredQuestionsController {
         );
       return;
     }
+
     const [{ text, id, item_id: itemIdMl }] = getQuestionByID.data;
 
     if (!itemIdMl) {
@@ -91,18 +88,22 @@ export class GetUnansweredQuestionsController {
         );
       return;
     }
+
     const getProductByMlID = await new GetMlProductByID().execute(itemIdMl);
 
     if (!getProductByMlID.data) {
       res.status(getProductByMlID.code).send(getProductByMlID);
       return;
     }
+
     const productDeskSearch = await new SearchProductsByMlIdZohoDesk().execute(
       orgID,
       consultOrganizationByID.data[0].accessTokenZoho,
       itemIdMl
     );
+
     let productDeskID: string;
+
     if (productDeskSearch.status) {
       productDeskID = productDeskSearch.data[0].id;
     } else {
@@ -112,17 +113,21 @@ export class GetUnansweredQuestionsController {
         getProductByMlID.data[0].title,
         getProductByMlID.data[0].link
       );
+
       const createProductDesk = await new CreateProdutoZohoDesk().execute(
         orgID,
         consultOrganizationByID.data[0].accessTokenZoho,
         createProductDeskModel
       );
+
       if (!createProductDesk.status) {
         res.status(createProductDesk.code).send(createProductDesk);
         return;
       }
+
       productDeskID = createProductDesk?.data?.id;
     }
+
     const ticketData = {
       subject: `Pergunta do Mercado Livre - ${id}`,
       departmentId: consultOrganizationByID.data[0].departmentIdZohoDesk,
@@ -133,11 +138,13 @@ export class GetUnansweredQuestionsController {
         cf_id_ml: questionID,
       },
     };
+
     await new CreateTicketZohoDesk().execute(
       ticketData,
       orgID,
       consultOrganizationByID.data[0].accessTokenZoho
     );
+
     return;
   }
 }

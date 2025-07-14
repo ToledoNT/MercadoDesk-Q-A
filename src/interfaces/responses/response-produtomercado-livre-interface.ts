@@ -1,4 +1,4 @@
-import { IProdutoMercadoLivre } from "../produto-mercado-livre-interface copy";
+import { IProdutoMercadoLivre } from "../Iproduto-mercado-livre-interfaces";
 
 export interface IResponseProdutoMercadoLivre {
   status: boolean;
