@@ -3,12 +3,17 @@ import { ResponseTemplateModel } from "../../model/response-templete-model";
 import { ResponseTemplateInterface } from "../../interfaces/responses/response-templete-interface";
 
 export class ProductInformationMLApi {
-  async getProductByID(productID: string): Promise<ResponseTemplateInterface> {
+  async getProductByID(productID: string, accessTokenMl: string): Promise<ResponseTemplateInterface> {
     try {
-      const response = await axios.get(
-        `https://api.mercadolibre.com/items/${productID}`
+      const response = 
+      await axios.get(
+        `https://api.mercadolibre.com/items/${productID}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessTokenMl}`,
+          },
+        }
       );
-
       if (response.status !== 200) {
         throw new Error("Ocorreu um erro ao buscar o produto");
       }

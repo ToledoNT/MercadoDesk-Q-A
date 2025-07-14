@@ -242,14 +242,17 @@ export class TicketsDeskApi {
           },
         }
       );
-      if (response?.status == 204) {
-        throw new Error("Nenhum ticket encontrado");
-      }
+  
       if (response.status !== 200 && response.status !== 201) {
         throw new Error(
           "Ocorreu um erro ao pesquisar o ticket por Custom Field no Zoho Desk"
         );
       }
+  
+      if (!response.data || (Array.isArray(response.data) && response.data.length === 0)) {
+        return new ResponseTemplateModel(false, 200, "Nenhum ticket encontrado", []);
+      }
+  
       return new ResponseTemplateModel(
         true,
         200,
@@ -268,4 +271,4 @@ export class TicketsDeskApi {
       return new ResponseTemplateModel(false, 500, error as string, error);
     }
   }
-}
+}  

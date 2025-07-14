@@ -15,7 +15,6 @@ export class GetUnansweredQuestionsController {
     const { orgID } = req.params;
     const { resource } = req.body;
     const questionID = resource.split("/").pop();
-
     const consultOrganizationByID = await new FetchCliente().execute({
       orgIdDesk: orgID,
     });
@@ -23,7 +22,6 @@ export class GetUnansweredQuestionsController {
       res.status(consultOrganizationByID.code).send(consultOrganizationByID);
       return;
     }
-
     const requiredFields = [
       "accessTokenZoho",
       "accessTokenMl",
@@ -38,27 +36,21 @@ export class GetUnansweredQuestionsController {
       res.status(validatedFields.code).send(validatedFields);
       return;
     }
-
     const ticketExists = await new SearchTicketsByMlIdZohoDesk().execute(
       orgID,
       consultOrganizationByID.data[0].accessTokenZoho,
       questionID
     );
-    console.log(ticketExists)
     if (ticketExists.status) {
       res
         .status(400)
         .send(new ResponseTemplateModel(false, 400, "Ticket já criado", []));
       return;
     }
-
     const getQuestionByID = await new GetQuestionsByID().execute(
       questionID,
       consultOrganizationByID.data[0].accessTokenMl
     );
-
-    console.log(getQuestionByID);
-
     if (!getQuestionByID || !getQuestionByID.data) {
       res
         .status(400)
@@ -72,9 +64,7 @@ export class GetUnansweredQuestionsController {
         );
       return;
     }
-
     const [{ text, id, item_id: itemIdMl }] = getQuestionByID.data;
-
     if (!itemIdMl) {
       res
         .status(400)
@@ -88,48 +78,48 @@ export class GetUnansweredQuestionsController {
         );
       return;
     }
-
-    const getProductByMlID = await new GetMlProductByID().execute(itemIdMl);
-
+    const getProductByMlID = await new GetMlProductByID().execute(itemIdMl,consultOrganizationByID.data[0].accessTokenMl);
     if (!getProductByMlID.data) {
       res.status(getProductByMlID.code).send(getProductByMlID);
       return;
     }
-
     const productDeskSearch = await new SearchProductsByMlIdZohoDesk().execute(
       orgID,
       consultOrganizationByID.data[0].accessTokenZoho,
       itemIdMl
     );
-
     let productDeskID: string;
-
-    if (productDeskSearch.status) {
+    if (productDeskSearch.status && productDeskSearch.data && productDeskSearch.data.length > 0) {
       productDeskID = productDeskSearch.data[0].id;
     } else {
-      const createProductDeskModel = new ProdutoDeskModel(
+      if (!getProductByMlID.data || !getProductByMlID.data[0]) {
+        res.status(400).send(new ResponseTemplateModel(false, 400, "Produto ML não encontrado", []));
+        return;
+      }
+    const createProductDeskModel = new ProdutoDeskModel(
         [consultOrganizationByID.data[0].departmentIdZohoDesk],
         itemIdMl,
         getProductByMlID.data[0].title,
         getProductByMlID.data[0].link
       );
-
-      const createProductDesk = await new CreateProdutoZohoDesk().execute(
+    const createProductDesk = await new CreateProdutoZohoDesk().execute(
         orgID,
         consultOrganizationByID.data[0].accessTokenZoho,
         createProductDeskModel
       );
-
       if (!createProductDesk.status) {
         res.status(createProductDesk.code).send(createProductDesk);
         return;
       }
-
+    
       productDeskID = createProductDesk?.data?.id;
     }
-
+    if (!productDeskID) {
+      res.status(400).send(new ResponseTemplateModel(false, 400, "ID do produto Zoho Desk não encontrado", []));
+      return;
+    }
     const ticketData = {
-      subject: `Pergunta do Mercado Livre - ${id}`,
+      subject: `Pergunta do Mercado Livre - ${id}`, 
       departmentId: consultOrganizationByID.data[0].departmentIdZohoDesk,
       contactId: consultOrganizationByID.data[0].contactIdZohoDesk,
       productId: productDeskID,
@@ -138,13 +128,15 @@ export class GetUnansweredQuestionsController {
         cf_id_ml: questionID,
       },
     };
-
-    await new CreateTicketZohoDesk().execute(
+    const createTicket = await new CreateTicketZohoDesk().execute(
       ticketData,
       orgID,
       consultOrganizationByID.data[0].accessTokenZoho
     );
-
+    if (!createTicket.status) {
+      res.status(createTicket.code).send(createTicket);
+      return;
+    }
     return;
   }
-}
+}    

@@ -8,7 +8,8 @@ export class MercadoLivreModel {
   refreshTokenMl: string;
   text?: string;
   id?: string;
-
+  item_id?: string;  
+  
   constructor(value?: IMercadoLivre) {
     if (!value) {
       throw new Error("Parâmetro 'value' é obrigatório");
@@ -21,5 +22,6 @@ export class MercadoLivreModel {
     if (value.accessTokenMl) this.accessTokenMl = value.accessTokenMl;
     if (value.text) this.text = value.text;
     if (value.id) this.id = value.id;
+    if (value.item_id) this.item_id = value.item_id;  // <- e aqui no construtor
   }
 }

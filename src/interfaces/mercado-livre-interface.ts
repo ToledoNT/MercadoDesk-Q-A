@@ -6,7 +6,7 @@ export interface IMercadoLivre {
   accessTokenMl?: string;
   id?: string;
   text?: string;
-  refresh_token?: string;
-  access_token?: string;
   item_id?: string;
+  refresh_token?: string; 
+  access_token?: string;  
 }

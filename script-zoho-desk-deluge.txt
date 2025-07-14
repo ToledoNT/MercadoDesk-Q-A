@@ -1,0 +1,29 @@
+url = "https://desk.zoho.com/api/v1/tickets/" + ticketID;
+
+ticketResponse = invokeurl
+[
+	url : url
+	type : GET
+	connection : "zoho_desk"
+];
+info ticketResponse;
+
+if (ticketResponse != null && ticketResponse.containsKey("description")) 
+{
+	description = ticketResponse.get("description");
+	info description;
+	orgID = "892050861";
+	endpoint = "https://48caa90eb870.ngrok-free.app/api/mercado-livre/consultToken/" + orgID + "/" + ticketID;
+	postBody = map();
+	postBody.put("description", description);
+
+	ticketPostResponse = invokeurl
+	[
+		url : endpoint
+		type : POST
+		parameters : postBody.toString()
+		connection : "zoho_desk"
+	];
+
+	info ticketPostResponse;
+}

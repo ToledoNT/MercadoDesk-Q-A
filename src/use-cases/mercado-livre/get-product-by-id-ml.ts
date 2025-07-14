@@ -4,8 +4,8 @@ import { ResponseProdutoMercadoLivreModel } from "../../model/response/response-
 import { CreateLog } from "../logs/create-log";
 
 export class GetMlProductByID {
-  async execute(id: string): Promise<IResponseProdutoMercadoLivre> {
-    const response = await new ProductInformationMLApi().getProductByID(id);
+  async execute(id: string, accessTokenMl: string): Promise<IResponseProdutoMercadoLivre> {
+    const response = await new ProductInformationMLApi().getProductByID(id,accessTokenMl);
     if (!response.status) {
       await new CreateLog().execute(response);
     }

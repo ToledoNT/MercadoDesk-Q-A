@@ -19,11 +19,12 @@ export class QuestionsAndAnswersMLApi {
       if (response.status !== 200) {
         throw new Error("Ocorreu um erro ao buscar pergunta do ID");
       }
+      const { id: questionId, text, item_id } = response.data;
       return new ResponseTemplateModel(
         true,
         200,
-        "Perguntas recebidas com sucesso!",
-        response.data
+        "Pergunta recebida com sucesso!",
+        [{ id: questionId, text, item_id }]
       );
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
@@ -42,7 +43,6 @@ export class QuestionsAndAnswersMLApi {
       );
     }
   }
-
   async getAllQuestionsSellerML(
     sellerID: string,
     token: string
@@ -160,7 +160,6 @@ export class QuestionsAndAnswersMLApi {
       );
     }
   }
-
   async sendAnswer(
     tokenML: string,
     ticketQuestionId: string,

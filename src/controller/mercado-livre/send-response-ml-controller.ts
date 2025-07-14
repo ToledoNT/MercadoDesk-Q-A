@@ -18,7 +18,6 @@ export class SendResponseMlController {
       res.status(consultOrganizationByID.code).send(consultOrganizationByID);
       return;
     }
-
     const requiredFields = ["accessTokenZoho", "accessTokenMl"];
     const validatedFields = new FieldsValidator().execute(
       consultOrganizationByID.data,
@@ -32,7 +31,7 @@ export class SendResponseMlController {
     const consultTicket = await new GetTicketByIDZohoDesk().execute(
       id,
       orgID,
-      accessTokenZoho!
+      accessTokenZoho
     );
     if (!consultTicket.status) {
       res
